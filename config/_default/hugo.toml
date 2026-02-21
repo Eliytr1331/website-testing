@@ -2,7 +2,6 @@
 # Refer to the Hugo docs for more details:
 # https://gohugo.io/getting-started/configuration/
 
-baseURL = 'https://example.org/' # TODO: Update this to your actual domain
 languageCode = 'en-us'
 theme = 'blowfish'
 
