@@ -1,0 +1,32 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Big Games"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "January 2, 2006"
+  logo = "img/stars.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  description = "A game development studio"
+  # copyright = "Your Studio Name"
+
+[params.author]
+  name = "Your Studio Name"
+  # email = "contact@yourstudio.com"
+  # image = "img/studio-logo.png"
+  # imageQuality = 96
+  headline = "Game Development Studio"
+  bio = "We make games. A brief description of your studio goes here."
+  # links = [
+  #   { github = "https://github.com/yourstudio" },
+  #   { x-twitter = "https://twitter.com/yourstudio" },
+  #   { discord = "https://discord.gg/invitecode" },
+  #   { youtube = "https://youtube.com/yourstudio" },
+  #   { steam = "https://store.steampowered.com/developer/yourstudio" },
+  #   { itch-io = "https://yourstudio.itch.io" },
+  #   { email = "mailto:contact@yourstudio.com" },
+  # ]

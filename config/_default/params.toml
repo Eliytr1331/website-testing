@@ -1,1 +1,77 @@
-colorScheme = "blowfish"
+# -- Theme Parameters --
+# https://blowfish.page/docs/configuration/#theme-parameters
+
+colorScheme = "noir"
+defaultAppearance = "dark" # dark fits a game studio aesthetic
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+
+# mainSections = ["blog", "games"]
+
+disableImageOptimization = false
+
+[header]
+  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "background" # valid options: page, profile, hero, card, background, custom
+  homepageImage = "img/stars.png"
+  showRecent = true
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "/blog/"
+  cardView = true
+  cardViewScreenWidth = false
+  layoutBackgroundBlur = true # blurs the background image as you scroll down
+
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = true
+  showHero = true
+  heroStyle = "big" # valid options: basic, big, background, thumbAndBackground
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+  # sharingLinks = ["twitter", "reddit", "facebook", "email"]
+  showZenMode = false
+
+[list]
+  showHero = false
+  showBreadcrumbs = true
+  showSummary = true
+  showTableOfContents = false
+  showCards = true
+  cardView = true
+  cardViewScreenWidth = false
+  groupByYear = false
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
+
+[taxonomy]
+  showTermCount = true
+  showBreadcrumbs = true
+  cardView = false
+
+[term]
+  showBreadcrumbs = true
+  showTableOfContents = false
+  groupByYear = false
+  cardView = true
+  cardViewScreenWidth = false

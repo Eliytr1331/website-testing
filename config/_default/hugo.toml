@@ -1,7 +1,24 @@
-baseURL = 'https://example.org/'
+# -- Site Configuration --
+# Refer to the Hugo docs for more details:
+# https://gohugo.io/getting-started/configuration/
+
+baseURL = 'https://example.org/' # TODO: Update this to your actual domain
 languageCode = 'en-us'
-title = 'Website Testing'
 theme = 'blowfish'
+
+enableEmoji = true
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[pagination]
+  pagerSize = 12
