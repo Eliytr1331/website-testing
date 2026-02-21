@@ -11,6 +11,7 @@ enableCodeCopy = true
 # mainSections = ["blog", "games"]
 
 disableImageOptimization = false
+hotlinkFeatureImage = true
 
 [header]
   layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur

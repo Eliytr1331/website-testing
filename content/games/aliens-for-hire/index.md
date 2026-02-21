@@ -1,6 +1,5 @@
 +++
 title = "Aliens For Hire"
-date = '2026-02-21T12:00:00-06:00'
 draft = false
 description = "Our game currently in development."
 summary = "Follow the development of our latest project."
@@ -9,6 +8,11 @@ categories = ["Games"]
 showHero = true
 heroStyle = "background"
 showTableOfContents = true
+showDate = false
+showAuthor = false
+showReadingTime = false
+showWordCount = false
+showPagination = false
 +++
 
 ## Overview

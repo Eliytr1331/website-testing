@@ -1,0 +1,75 @@
+{{- $id := .Get "id" -}}
+{{- $url := .Get "url" | default (printf "https://itch.io/embed/%s" $id) -}}
+{{- $title := .Get "title" | default "Game" -}}
+
+{{- /* Read the active color scheme CSS */ -}}
+{{- $scheme := site.Params.colorScheme | default "blowfish" -}}
+{{- $css := resources.Get (printf "css/schemes/%s.css" (lower $scheme)) -}}
+{{- $content := $css.Content -}}
+
+{{- /* neutral-50 */ -}}
+{{- $m := findRE `--color-neutral-50:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $n50 := "" -}}{{- with $m -}}{{- $n50 = replaceRE `--color-neutral-50:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* neutral-200 */ -}}
+{{- $m = findRE `--color-neutral-200:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $n200 := "" -}}{{- with $m -}}{{- $n200 = replaceRE `--color-neutral-200:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* neutral-700 */ -}}
+{{- $m = findRE `--color-neutral-700:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $n700 := "" -}}{{- with $m -}}{{- $n700 = replaceRE `--color-neutral-700:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* neutral-800 */ -}}
+{{- $m = findRE `--color-neutral-800:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $n800 := "" -}}{{- with $m -}}{{- $n800 = replaceRE `--color-neutral-800:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* primary-400 */ -}}
+{{- $m = findRE `--color-primary-400:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $p400 := "" -}}{{- with $m -}}{{- $p400 = replaceRE `--color-primary-400:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* primary-600 */ -}}
+{{- $m = findRE `--color-primary-600:\s*(\d+[\s,]+\d+[\s,]+\d+)` $content -}}
+{{- $p600 := "" -}}{{- with $m -}}{{- $p600 = replaceRE `--color-primary-600:\s*` "" (index . 0) -}}{{- end -}}
+
+{{- /* Light mode colors */ -}}
+{{- $parts := split $n50 ", " -}}
+{{- $lightBg := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $n800 ", " -}}
+{{- $lightFg := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $p600 ", " -}}
+{{- $lightLink := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $n200 ", " -}}
+{{- $lightBorder := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- /* Dark mode colors */ -}}
+{{- $parts = split $n800 ", " -}}
+{{- $darkBg := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $n200 ", " -}}
+{{- $darkFg := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $p400 ", " -}}
+{{- $darkLink := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- $parts = split $n700 ", " -}}
+{{- $darkBorder := printf "%02X%02X%02X" (int (index $parts 0)) (int (index $parts 1)) (int (index $parts 2)) -}}
+
+{{- /* Build iframe URLs */ -}}
+{{- $lightSrc := printf "https://itch.io/embed/%s?bg_color=%s&fg_color=%s&link_color=%s&border_color=%s" $id $lightBg $lightFg $lightLink $lightBorder -}}
+{{- $darkSrc := printf "https://itch.io/embed/%s?dark=true&bg_color=%s&fg_color=%s&link_color=%s&border_color=%s" $id $darkBg $darkFg $darkLink $darkBorder -}}
+
+{{- /* Light mode iframe */ -}}
+<div class="not-prose block dark:hidden">
+  <iframe height="167" frameborder="0" src="{{ $lightSrc }}" width="552"
+    style="opacity:0;transition:opacity 0.3s ease"
+    onload="this.style.opacity='1'"><a href="{{ $url }}">{{ $title }}</a></iframe>
+</div>
+{{- /* Dark mode iframe */ -}}
+<div class="not-prose hidden dark:block">
+  <iframe height="167" frameborder="0" src="{{ $darkSrc }}" width="552"
+    style="opacity:0;transition:opacity 0.3s ease"
+    onload="this.style.opacity='1'"><a href="{{ $url }}">{{ $title }}</a></iframe>
+</div>
