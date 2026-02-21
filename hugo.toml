@@ -2,3 +2,6 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Website Testing'
 theme = 'blowfish'
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
